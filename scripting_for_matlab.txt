@@ -1,0 +1,21 @@
+BlockPaths = find_system('testing','Type','Block')
+ModelParameterNames = get_param('testing','ObjectParameters')
+BlockDialogParameters = get_param('testing/Step1','DialogParameters')
+%BlockParameterValue = get_param('testing','Step1')
+set_param('testing/Step1', 'Time', '10')
+%BlockTypes = get_param(BlockPaths,'BlockType')
+% get the port handles
+
+% get the output port data type
+testing([],[],[],'term')
+
+
+model = 'testing';
+open_system(model)
+activeConfigObj = getActiveConfigSet(model);
+get_param(activeConfigObj,'StopTime')
+set_param(activeConfigObj,'StopTime','200');
+set_param(activeConfigObj,'SolverType','Variable-step');
+testing([],[],[],'compile')
+run(model)
+testing([],[],[],'term')
