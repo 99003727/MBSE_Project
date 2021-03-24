@@ -1,0 +1,8 @@
+model = 'Hatch_open';
+activeConfigObj = getActiveConfigSet(model);
+get_param(activeConfigObj,'StopTime')
+set_param(activeConfigObj,'StopTime','40');
+set_param(activeConfigObj,'SolverType','Variable-step');
+%simOut=sim(model,'SaveOutput','on','OutputSaveName','yOut','saveTime','on','TimeSaveName','tOut');
+set_param(bdroot,'ReturnWorkspaceOutputs','on');
+[y]=sim(model)
