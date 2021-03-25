@@ -1,0 +1,4 @@
+model='Hatch_open_2017b';
+sim(model,'returnWorkspaceOutputs','on')
+T=table(out.ScopeData.time, out.ScopeData.signals.values)
+writetable(T, 'myExcelsheet.xls')
